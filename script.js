@@ -1,7 +1,7 @@
 "use strict";
 
 // 1
-function sumTwoSmallestNumbers(array, ...arg) {
+function sumTwoSmallestNumbers(...array) {
     if (array.length < 2) {
         console.error("Not enough arguments")
         return;
@@ -10,18 +10,18 @@ function sumTwoSmallestNumbers(array, ...arg) {
     return sortedArray[0] + sortedArray[1];
 };
 
-console.log(sumTwoSmallestNumbers([19, 5, 42, 2, 77, 676, 888, 7, 8]));
-console.log(sumTwoSmallestNumbers([1, 3, 2]));
-console.log(sumTwoSmallestNumbers([1]));
+console.log(sumTwoSmallestNumbers(19, 5, 42, 2, 77)); // 7
+console.log(sumTwoSmallestNumbers(1, 3, 2)); // 3
+console.log(sumTwoSmallestNumbers(1)); // undefined и отдельный console.error("...")
 
 // 2
-const createCalculator = (firstVariable) => {
+const createCalculator = (initialValue) => {
     let value = 0;
     return {
-        sum: (value) => (firstVariable += value),
-        mult: (value) => (firstVariable *= value),
-        sub: (value) => (firstVariable -= value),
-        div: (value) => (firstVariable /= value),
+        sum: (value) => (initialValue += value),
+        mult: (value) => (initialValue *= value),
+        sub: (value) => (initialValue -= value),
+        div: (value) => (initialValue /= value),
     };
 };
 const calc = createCalculator(10);
